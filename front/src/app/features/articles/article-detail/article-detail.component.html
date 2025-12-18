@@ -1,0 +1,75 @@
+<!-- Loading -->
+<p *ngIf="loading">Chargement de l’article...</p>
+
+<!-- Erreur -->
+<p *ngIf="error" class="error">{{ error }}</p>  
+
+<div *ngIf="!loading && article">
+
+  <!-- Header -->
+  <button mat-icon-button class="back-btn" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <h1 class="title">{{ article.title }}</h1>
+
+  <!-- Meta infos -->
+  <div class="meta">
+    <span>{{ article.createdAt | date:'dd/MM/yyyy' }}</span>
+    <span>{{ article.author.username }}</span>
+    <span>{{ article.subject.name }}</span>
+  </div>
+
+  <!-- Content -->
+  <p class="content">
+    {{ article.content }}
+  </p>
+
+  <hr class="divider" />
+
+  <!-- Comments -->
+  <h3 class="comments-title">Commentaires</h3>
+
+  <p *ngIf="comments.length === 0">
+    Aucun commentaire pour le moment.
+  </p>
+
+  <div class="comment" *ngIf="currentComment">
+    <span class="comment-author">{{ currentComment.author }}</span>
+
+    <div class="comment-bubble">
+      {{ currentComment.content }}
+    </div>
+
+    <div class="comment-nav">
+      <button mat-button
+        (click)="previousComment()"
+        [disabled]="currentCommentIndex === 0">
+        ◀
+      </button>
+
+      <button mat-button
+        (click)="nextComment()"
+        [disabled]="currentCommentIndex === comments.length - 1">
+        ▶
+      </button>
+    </div>
+  </div>
+
+  <!-- Add comment (local pour l’instant) -->
+  <div class="add-comment">
+    <textarea
+      placeholder="Écrivez ici votre commentaire"
+      [(ngModel)]="newComment">
+    </textarea>
+
+    <button
+      mat-icon-button
+      class="send-btn"
+      (click)="addComment()"
+      [disabled]="isSubmitting || newComment.trim().length <= minCommentLength">
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
+
+</div>

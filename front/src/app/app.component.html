@@ -1,1 +1,65 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container class="sidenav-container">
+
+  <!-- MENU MOBILE OVERLAY -->
+  <mat-sidenav
+    *ngIf="authService.showHeaderOptions$ | async"
+    #sidenav
+    mode="over"
+    position="end"
+    class="mobile-sidenav"
+    (clickOutside)="sidenav.close()"
+  >
+    <div class="mobile-menu">
+      <span class="logout"  (click)="logout()">Se déconnecter</span>
+
+      <span 
+        routerLink="/articles" 
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="sidenav.close()"
+      >        
+        Articles
+      </span>
+
+
+      <span 
+        routerLink="/themes" 
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="sidenav.close()"
+      >        
+        Thèmes
+      </span>
+
+      <div class="mobile-user">
+        <button
+          mat-icon-button
+          routerLink="/profile"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="sidenav.close()"
+        >          
+          <mat-icon class="icon-size">account_circle</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <!-- CONTENU -->
+  <mat-sidenav-content>
+
+    <!-- HEADER -->
+    <app-header 
+      *ngIf="authService.showHeader$ | async"
+      [showOptions]="(authService.showHeaderOptions$ | async) ?? false"
+      (toggleMenu)="toggleSidenav()"
+    ></app-header>
+
+    <!-- PAGE -->
+    <main class="page-content container">
+      <router-outlet></router-outlet>
+    </main>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

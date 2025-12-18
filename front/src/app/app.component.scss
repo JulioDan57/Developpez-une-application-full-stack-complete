@@ -1,0 +1,68 @@
+/* Layout global */
+.sidenav-container {
+  height: 100vh;
+}
+
+/* Contenu page sous le header */
+.page-content {
+  padding: 20px;
+}
+
+/* --- Menu mobile overlay --- */
+.mobile-sidenav {
+  width: 220px;
+  padding: 20px;
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+.mobile-menu span {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.mobile-menu .logout {
+  font-size: 14px;
+  font-weight: 700;
+  color: #A40F0F;
+}
+
+.mobile-user {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-user button {
+  width: 60px !important;
+  height: 60px !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* L’icône elle-même */
+.icon-size {
+  font-size: 60px;
+  height: 60px;
+  width: 60px;
+  line-height: 60px;  /* évite que l’icône remonte */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Couleur active pour le menu mobile */
+.mobile-menu span.active-link {
+  color: #7763C5; /* même violet que pour le header desktop */
+  font-weight: 700;
+}

@@ -1,0 +1,137 @@
+// --- Structure générale --- /
+/* No necessaire
+.container {
+  max-width: 850px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #000;
+  background: #fff;
+  min-height: 600px;
+  box-sizing: border-box;
+  position: relative; // Ajouté pour que le back-btn soit positionné par rapport au container 
+}
+
+// --- Header : flèche + logo --- 
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #000;
+}
+*/
+
+/* No neccessaire
+.logo {
+  height: 80px;
+}
+*/
+
+/* --- Titre --- */
+.title {
+  text-align: center;
+  margin: 30px 0 20px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #000;
+}
+
+.back-btn {
+  position: absolute; /* permet de le placer librement */
+  top: 120px;          /* distance depuis le haut du container */
+  left: 20px;         /* distance depuis la gauche du container */
+  z-index: 10;
+  margin: 0;          /* on supprime le margin-right précédent */
+}
+
+.back-btn mat-icon {
+  font-size: 28px; /* plus grande flèche */
+}
+
+
+
+/* ======================
+   FORMULAIRE
+====================== */
+.form {
+  max-width: 320px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+mat-form-field {
+  margin-bottom: 0;
+}
+
+.submit-btn {
+  background: #7763c5 !important;
+  color: white !important;
+  border-radius: 8px !important;
+  height: 40px;
+  font-weight: 700;
+}
+
+
+
+/* --- Form --- */
+/*
+.form {
+  max-width: 320px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+*/
+/* --- Bouton --- */
+/*.submit-btn {
+  background: #7763c5 !important;
+  color: white !important;
+  border-radius: 8px !important;
+  height: 40px;
+  font-weight: 700;
+}
+*/
+
+/* ===========================
+   RESPONSIVE (mobile)
+=========================== */
+@media (max-width: 600px) {
+ /* No necessaire
+  .container {
+    width: 90%;
+    padding: 15px;
+    margin: 20px auto;
+  }
+
+  .header {
+    justify-content: flex-start;
+    border-bottom: none;
+  }
+
+  .logo {
+    height: 129px;
+    margin: 0px auto;
+  }
+*/
+  .title {
+    margin: 10px 0 20px;
+    font-size: 22px;
+  }
+
+  .form {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+
+  .back-btn {
+    top: 90px;  // plus proche du haut en mobile 
+    left: 10px; // léger décalage à gauche 
+  }
+  
+}

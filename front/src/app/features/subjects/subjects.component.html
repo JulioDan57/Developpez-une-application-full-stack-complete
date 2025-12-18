@@ -1,0 +1,25 @@
+<p *ngIf="loading">Chargement des thèmes...</p>
+<p *ngIf="error" class="error">{{ error }}</p>
+
+<div class="subjects" *ngIf="!loading">
+  <div
+    class="available-subjects"
+    *ngFor="let subject of subjects"
+    tabindex="0"
+  >
+    <h3 class="subject-title">{{ subject.name }}</h3>
+
+    <p class="content">
+      {{ subject.description }}
+    </p>
+
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="subject.subscribed"
+      (click)="subscribe(subject)"
+    >
+      {{ subject.subscribed ? 'Déjà abonné' : "S'abonner" }}
+    </button>
+  </div>
+</div>

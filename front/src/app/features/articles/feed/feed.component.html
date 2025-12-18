@@ -1,0 +1,64 @@
+<!-- Actions -->
+<div class="actions">
+  <button mat-raised-button color="primary" (click)="createArticle()">
+    Créer un article
+  </button>
+
+  <button
+    mat-button
+    class="filter"
+    [matMenuTriggerFor]="sortMenu"
+  >
+    Trier par
+    <mat-icon>arrow_drop_down</mat-icon>
+  </button>
+
+  <mat-menu #sortMenu="matMenu">
+    <button mat-menu-item (click)="sortByDate('asc')">
+      <mat-icon>arrow_upward</mat-icon>
+      <span>Date (ascendant)</span>
+    </button>
+
+    <button mat-menu-item (click)="sortByDate('desc')">
+      <mat-icon>arrow_downward</mat-icon>
+      <span>Date (descendant)</span>
+    </button>
+  </mat-menu>
+</div>
+
+<!-- Loading -->
+<p *ngIf="loading">Chargement des articles...</p>
+
+<!-- Erreur -->
+<p *ngIf="error" class="error">{{ error }}</p>
+
+<!-- Aucun article -->
+<p *ngIf="!loading && articles.length === 0">
+  Aucun article pour le moment.
+</p>
+
+<!-- Liste d’articles -->
+<div class="articles">
+  <div
+    class="feed"
+    *ngFor="let article of articles"
+    (click)="openArticle(article)"
+    tabindex="0"
+    role="button"
+  >
+    <h3 class="article-title">{{ article.title }}</h3>
+
+    <div class="article-meta">
+      <span class="date">
+        {{ article.createdAt | date:'dd/MM/yyyy' }}
+      </span>
+      <span class="author">
+        {{ article.author.username }}
+      </span>
+    </div>
+
+    <p class="content">
+      {{ article.content | slice:0:180 }}...
+    </p>
+  </div>
+</div>

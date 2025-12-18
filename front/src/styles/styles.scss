@@ -2,3 +2,18 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.success-toast {
+  background-color: #4caf50; // vert
+  color: white;
+}
+
+.error-toast {
+  background-color: #f44336; // rouge
+  color: white;
+}
+
+.info-toast {
+  background-color: #2196f3; // bleu
+  color: white;
+}

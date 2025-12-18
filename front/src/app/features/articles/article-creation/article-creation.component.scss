@@ -1,0 +1,89 @@
+// --- Structure générale --- /
+
+/* --- Titre --- */
+.title {
+  text-align: center;
+  margin: 30px 0 20px;
+  font-size: 24px;
+  font-weight: 400;
+  color: #000;
+}
+
+.back-btn {
+  position: absolute; /* permet de le placer librement */
+  top: 120px;          /* distance depuis le haut du container */
+  left: 20px;         /* distance depuis la gauche du container */
+  z-index: 10;
+  margin: 0;          /* on supprime le margin-right précédent */
+}
+
+.back-btn mat-icon {
+  font-size: 28px; /* plus grande flèche */
+}
+
+
+
+/* ======================
+   FORMULAIRE
+====================== */
+.form {
+  max-width: 320px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+mat-form-field {
+  margin-bottom: 0;
+}
+
+.submit-btn {
+  background: #7763c5 !important;
+  color: white !important;
+  border-radius: 8px !important;
+  height: 40px;
+  font-weight: 700;
+}
+
+
+textarea {
+  resize: vertical; /* permet à l’utilisateur d’agrandir */
+  min-height: 120px;
+}
+
+
+/* ===========================
+   RESPONSIVE (mobile)
+=========================== */
+@media (max-width: 600px) {
+  .title {
+    margin: 10px 0 20px;
+    font-size: 22px;
+  }
+
+  .form {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+
+  .back-btn {
+    top: 90px;  // plus proche du haut en mobile 
+    left: 10px; // léger décalage à gauche 
+  }
+
+
+
+
+
+
+ 
+
+
+
+  
+}

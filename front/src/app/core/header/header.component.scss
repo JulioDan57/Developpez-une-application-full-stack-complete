@@ -1,0 +1,175 @@
+/* --- Structure générale --- */
+
+/* --- Header --- */
+.header {
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #000;
+  padding: 10px 0;
+  
+}
+
+.logo {
+  height: 80px;
+}
+
+
+/* --- Menu --- */
+
+/* Couleur pour l’élément actif */
+.nav-links span.active-link {
+  color: #7763C5; /* couleur violette pour indiquer l'option active */
+  font-weight: 700;
+}
+
+.nav-links {
+  
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-left: 200px; // <-- déplace tout le menu vers la gauche 
+}
+
+.nav-links span {
+  font-family: Inter, sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Se déconnecter */
+.logout {
+  color: #A40F0F;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.icon-size {
+  font-size: 60px;
+  height: 60px;
+  width: 60px;
+  line-height: 60px;  // évite que l’icône remonte 
+  display: flex;
+  align-items: center;
+  justify-content: center;    
+}
+
+/* Corrige le conteneur mat-icon-button pour éviter la coupure */
+.user-btn {
+  width: 60px !important;   /* même taille que ton icône */
+  height: 60px !important;
+  padding: 0 !important;
+  min-width: 0 !important;
+  border-radius: 50%;
+  overflow: visible !important; /* <-- IMPORTANT : empêche la coupe */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* L’icône elle-même */
+.user-btn .icon-size {
+  font-size: 60px;
+  height: 60px;
+  width: 60px;
+  line-height: 60px;  /* évite que l’icône remonte */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* --- Sidenav container --- */
+.sidenav-container {
+  height: 100%;
+}
+
+/* --- Menu mobile overlay --- */
+.mobile-sidenav {
+  width: 220px;
+  padding: 20px;
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+.mobile-menu span {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.mobile-menu .logout {
+  font-size: 14px;
+  font-weight: 700;
+  color: #A40F0F;
+}
+
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.mobile-user {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-user button {
+  width: 60px !important;
+  height: 60px !important;
+  min-width: 0 !important;
+  padding: 0 !important;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-nav span {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* --- Helpers visibilité --- */
+.desktop-only {
+  display: flex;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* --- Responsive mobile --- */
+@media (max-width: 600px) {
+
+  .logo {
+    height: 50px;
+  }
+
+  .nav-links {
+    display: none; /* Caché en mobile sauf si tu veux burger menu */
+  }
+
+  .user-btn mat-icon {
+    font-size: 32px;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: flex;
+  }  
+}
+

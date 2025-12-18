@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { ArticleCreationComponent } from './article-creation.component';
+
+describe('RegisterComponent', () => {
+  let component: ArticleCreationComponent;
+  let fixture: ComponentFixture<ArticleCreationComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ ArticleCreationComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(ArticleCreationComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

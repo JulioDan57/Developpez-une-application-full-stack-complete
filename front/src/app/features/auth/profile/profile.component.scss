@@ -1,0 +1,117 @@
+/* ======================
+   TITRE
+====================== */
+.title {
+  text-align: center;
+  margin: 30px 0 20px;
+  font-size: 24px;
+  font-weight: 400;
+}
+
+/* ======================
+   FORMULAIRE
+====================== */
+.form {
+  max-width: 320px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+mat-form-field {
+  margin-bottom: 0;
+}
+
+.submit-btn {
+  background: #7763c5 !important;
+  color: white !important;
+  border-radius: 8px !important;
+  height: 40px;
+  font-weight: 700;
+}
+
+/* ======================
+   SÉPARATEUR
+====================== */
+.divider {
+  width: 100%;
+  max-width: 900px;
+  margin: 32px auto;
+  border: none;
+  border-bottom: 1px solid #000;
+}
+
+/* ======================
+   SUBJECTS
+====================== */
+.subjects-wrapper {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.subjects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.subscribed-subjects {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 15px;
+  box-sizing: border-box;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.subscribed-subjects:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.subject-title {
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.content {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+button.mat-raised-button {
+  width: 150px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+button.mat-raised-button:disabled {
+  background-color: #ccc !important;
+  color: #666 !important;
+}
+
+/* ======================
+   MOBILE
+====================== */
+@media (max-width: 600px) {
+  .title {
+    font-size: 22px;
+    margin: 10px 0 20px;
+  }
+
+  .form {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .submit-btn,
+  button.mat-raised-button {
+    width: 100%;
+  }
+
+  .subjects {
+    grid-template-columns: 1fr;
+  }
+}

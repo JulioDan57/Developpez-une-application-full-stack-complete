@@ -1,0 +1,61 @@
+<button mat-icon-button class="back-btn" (click)="goBack()">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+
+<h1 class="title">Créer un nouvel article</h1>
+
+<p *ngIf="loading">Chargement des thèmes...</p>
+<p *ngIf="error" class="error">{{ error }}</p>
+
+<form
+  *ngIf="!loading"
+  class="form"
+  [formGroup]="profileForm"
+  (ngSubmit)="registerArticle()">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Sélectionner un thème</mat-label>
+
+    <mat-select formControlName="articleSubject">
+      <mat-option
+        *ngFor="let subject of subjects"
+        [value]="subject">
+        {{ subject.name }}
+      </mat-option>
+    </mat-select>
+
+    <mat-error *ngIf="profileForm.get('articleSubject')?.hasError('required')">
+      Champ obligatoire
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Titre de l’article</mat-label>
+    <input matInput formControlName="articleTitle" />
+    <mat-error *ngIf="profileForm.get('articleTitle')?.hasError('required')">
+      Champ obligatoire
+    </mat-error>
+    <mat-error *ngIf="profileForm.get('articleTitle')?.hasError('minlength')">
+      Minimum 10 caractères
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Contenu de l’article</mat-label>
+    <textarea matInput formControlName="articleContent" rows="6"></textarea>
+    <mat-error *ngIf="profileForm.get('articleContent')?.hasError('required')">
+      Champ obligatoire
+    </mat-error>
+    <mat-error *ngIf="profileForm.get('articleContent')?.hasError('minlength')">
+      Minimum 20 caractères
+    </mat-error>
+  </mat-form-field>
+
+  <button
+    mat-button
+    class="submit-btn"
+    type="submit"
+    [disabled]="profileForm.invalid || isSubmitting">
+    Créer
+  </button>
+</form>

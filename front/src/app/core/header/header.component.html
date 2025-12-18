@@ -1,0 +1,44 @@
+<header class="header">
+  <img src="assets/logo_p6.png" class="logo" />
+
+  <!-- MENU DESKTOP -->
+  <nav class="nav-links desktop-only" *ngIf="showOptions">
+    <span class="logout" (click)="logout()">Se déconnecter</span>
+
+    <span 
+      routerLink="/articles" 
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: true }">      
+      Articles
+    </span>
+
+    <span 
+      routerLink="/themes" 
+      routerLinkActive="active-link"
+      [routerLinkActiveOptions]="{ exact: true }">      
+      Thèmes
+    </span>
+  </nav>
+
+  <!-- USER DESKTOP -->
+  <button 
+    *ngIf="showOptions" 
+    mat-icon-button 
+    class="user-btn desktop-only"
+    routerLink="/profile"
+    routerLinkActive="active-link"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >    
+    <mat-icon class="icon-size">account_circle</mat-icon>
+  </button>
+
+  <!-- BURGER MOBILE -->
+  <button
+    *ngIf="showOptions"
+    mat-icon-button
+    class="user-btn mobile-only"
+    (click)="toggleMenu.emit()"
+  >
+    <mat-icon class="icon-size">reorder</mat-icon>
+  </button>
+</header>

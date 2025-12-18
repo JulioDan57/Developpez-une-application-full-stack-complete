@@ -1,0 +1,46 @@
+  <button mat-icon-button class="back-btn" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <h1 class="title">Se connecter</h1>
+
+  <form class="form" [formGroup]="profileForm" (ngSubmit)="signInProfile()">
+
+    <mat-form-field appearance="outline">
+      <mat-label>E-mail ou nom d’utilisateur</mat-label>
+      <input matInput formControlName="usernameOrEmail" />
+      <mat-error *ngIf="profileForm.get('usernameOrEmail')?.hasError('required')">
+        Champ obligatoire
+      </mat-error>
+      <mat-error *ngIf="profileForm.get('usernameOrEmail')?.hasError('minlength')">
+        Minimum 3 caractères
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Mot de passe</mat-label>
+      <input matInput type="password" formControlName="password" />
+      <mat-error *ngIf="profileForm.get('password')?.hasError('required')">
+        Champ obligatoire
+      </mat-error>
+
+      <mat-error *ngIf="profileForm.get('password')?.hasError('pattern')">
+          Le mot de passe doit avoir au moins 8 caractères (au moins une 
+          minuscule, une majuscule, un chiffre et un caractère spécial).
+      </mat-error>    
+    </mat-form-field>
+
+    <button
+      mat-button
+      class="submit-btn"
+      type="submit"
+      [disabled]="profileForm.invalid"
+    >
+      Se connecter
+    </button>
+
+  </form>  
+
+  <div class="api-error" *ngIf="apiError">
+    {{ apiError }}
+  </div>
