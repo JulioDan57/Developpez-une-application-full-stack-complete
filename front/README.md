@@ -1,13 +1,15 @@
 # 📰 MDD – Frontend Angular
 
-Ce projet est le **frontend Angular** de l’application **MDD (Monde de Dév)**.  
+![Create Article](docs/screenshots/home.png) 
+
+Ce projet est le **frontend Angular** de l’application full stack  **MDD (Monde de Dév)**.  
 Il permet aux utilisateurs de consulter des articles, commenter, s’abonner à des thèmes, gérer leur profil et publier du contenu.
 
 Le frontend communique avec une API REST sécurisée via JWT.
 
 ---
 
-## 🚀 Stack technique
+## 🚀 Technologies utilisées
 
 - **Angular** 14+
 - **Angular Material** (UI & accessibilité)
@@ -28,6 +30,10 @@ Le frontend communique avec une API REST sécurisée via JWT.
 - Routes protégées via `AuthGuard`
 - Persistance de session via `localStorage`
 
+| Connexion | Inscription |
+|----------|-------------|
+| ![Login](docs/screenshots/login.png) | ![Register](docs/screenshots/register.png) |
+
 ### 📰 Articles
 - Affichage du feed d’articles
 - Tri par date
@@ -36,17 +42,34 @@ Le frontend communique avec une API REST sécurisée via JWT.
 - Rafraîchissement automatique des commentaires
 - Notifications toast (succès / erreur)
 
+| Feed des articles | Détail d’un article |
+|------------------|---------------------|
+| ![Articles](docs/screenshots/articles.png) | ![Article Detail](docs/screenshots/article-detail.png) |
+
+| Ajout de commentaire | Navigation entre commentaires |
+|---------------------|-------------------------------|
+| ![Add Comment](docs/screenshots/comment-add.png) | ![Comments Nav](docs/screenshots/comment-navigation.png) |
+
 ### ✍️ Création d’article
 - Création d’un nouvel article
 - Sélection des thèmes auxquels l’utilisateur est abonné
 - Validation des formulaires
 - Redirection vers l’article créé
 
+| Formulaire de création |
+|------------------------|
+| ![Create Article](docs/screenshots/article-create.png) |
+
+---
 ### 🧩 Thèmes (Subjects)
 - Liste des thèmes disponibles
 - Indication des thèmes déjà abonnés
 - Abonnement à un thème
 - Désactivation automatique du bouton si déjà abonné
+
+| Liste des thèmes disponibles |
+|------------------------|
+| ![Create Article](docs/screenshots/subjects.png) |
 
 ### 👤 Profil utilisateur
 - Chargement des informations utilisateur
@@ -55,6 +78,10 @@ Le frontend communique avec une API REST sécurisée via JWT.
 - Liste des abonnements
 - Désabonnement avec confirmation
 - Notification de succès après mise à jour
+
+| Profil | Désabonnement |
+|--------|---------------|
+| ![Profile](docs/screenshots/profile.png) | ![Unsubscribe](docs/screenshots/unsubscribe.png) |
 
 ---
 
@@ -102,38 +129,6 @@ src/
 - `GET /api/subjects?subscribed=false`
 - `POST /api/subjects/{id}/subscribe`
 - `POST /api/subjects/{id}/unsubscribe`
-
----
-
-## 🔔 Notifications
-
-Un service centralisé `NotificationService` est utilisé pour afficher des **toasts** :
-- Succès
-- Erreurs
-- Messages de confirmation
-
-Basé sur `MatSnackBar`.
-
----
-
-## ♿ Accessibilité & UX
-
-- Utilisation d’Angular Material
-- Gestion du focus clavier
-- Correction des warnings ARIA
-- Désactivation des boutons pendant les requêtes (`isSubmitting`)
-- Feedback utilisateur systématique
-
----
-
-## 🧠 Bonnes pratiques implémentées
-
-- Services API séparés
-- `finalize()` RxJS pour le nettoyage des états
-- Gestion centralisée des erreurs API
-- Interfaces TypeScript strictes
-- Composants responsables (smart components)
-- Code lisible et maintenable
 
 ---
 
