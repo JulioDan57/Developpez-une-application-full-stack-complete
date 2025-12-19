@@ -1,0 +1,150 @@
+# 📰 MDD – Frontend Angular
+
+Ce projet est le **frontend Angular** de l’application **MDD (Monde de Dév)**.  
+Il permet aux utilisateurs de consulter des articles, commenter, s’abonner à des thèmes, gérer leur profil et publier du contenu.
+
+Le frontend communique avec une API REST sécurisée via JWT.
+
+---
+
+## 🚀 Stack technique
+
+- **Angular** 14+
+- **Angular Material** (UI & accessibilité)
+- **RxJS**
+- **TypeScript**
+- **SCSS**
+- **JWT Authentication**
+- **REST API**
+
+---
+
+## 📦 Fonctionnalités principales
+
+### 🔐 Authentification
+- Inscription
+- Connexion
+- Gestion du token JWT
+- Routes protégées via `AuthGuard`
+- Persistance de session via `localStorage`
+
+### 📰 Articles
+- Affichage du feed d’articles
+- Tri par date
+- Détail d’un article
+- Ajout de commentaires
+- Rafraîchissement automatique des commentaires
+- Notifications toast (succès / erreur)
+
+### ✍️ Création d’article
+- Création d’un nouvel article
+- Sélection des thèmes auxquels l’utilisateur est abonné
+- Validation des formulaires
+- Redirection vers l’article créé
+
+### 🧩 Thèmes (Subjects)
+- Liste des thèmes disponibles
+- Indication des thèmes déjà abonnés
+- Abonnement à un thème
+- Désactivation automatique du bouton si déjà abonné
+
+### 👤 Profil utilisateur
+- Chargement des informations utilisateur
+- Mise à jour email / username / mot de passe
+- Rafraîchissement du token après mise à jour
+- Liste des abonnements
+- Désabonnement avec confirmation
+- Notification de succès après mise à jour
+
+---
+
+Test  s
+
+## 🏗️ Architecture du projet
+```
+src/
+├── app/
+│   ├── core/
+│   │   ├── services/        # Services API (auth, articles, subjects), gestion du token, notifications (toast)
+│   │   ├── guards/          # AuthGuard : protège les routes sécurisées
+│   │   ├── header/          # Header principal (navigation)
+│   │   ├── interceptors/    # Intercepteurs HTTP (ajout automatique du token JWT)
+│   │   └── models/          # Interfaces TypeScript partagées (User, Article, Subject, Comment, API responses)
+│   ├── features/
+│   │   ├── auth/            # Authentification : Login, Register, Profile (gestion du compte utilisateur, désabonnement)
+│   │   ├── articles/        # Articles : feed, détail d’un article, création, commentaires
+│   │   └── subjects/        # Sujets / thèmes : liste, abonnement
+│   ├── pages/
+│   │   ├── home/            # Page d’accueil publique de l’application (présentation, accès login/register)
+│   ├── shared/
+│   │   ├── components/      # Composants UI réutilisables (dialogs de confirmation) 
+│   └── app-routing.module.ts # Définition des routes et protections via AuthGuard
+
+```
+tetzrrzc 
+---
+
+## 🔌 Communication avec l’API
+
+### Authentification
+- `POST /api/auth/login`
+- `POST /api/auth/register`
+- `GET /api/auth/me`
+- `PUT /api/auth/me`
+
+### Articles
+- `GET /api/articles`
+- `GET /api/articles/{id}`
+- `POST /api/articles`
+- `POST /api/articles/{id}/comments`
+
+### Thèmes (Subjects)
+- `GET /api/subjects`
+- `GET /api/subjects?subscribed=true`
+- `GET /api/subjects?subscribed=false`
+- `POST /api/subjects/{id}/subscribe`
+- `POST /api/subjects/{id}/unsubscribe`
+
+---
+
+## 🔔 Notifications
+
+Un service centralisé `NotificationService` est utilisé pour afficher des **toasts** :
+- Succès
+- Erreurs
+- Messages de confirmation
+
+Basé sur `MatSnackBar`.
+
+---
+
+## ♿ Accessibilité & UX
+
+- Utilisation d’Angular Material
+- Gestion du focus clavier
+- Correction des warnings ARIA
+- Désactivation des boutons pendant les requêtes (`isSubmitting`)
+- Feedback utilisateur systématique
+
+---
+
+## 🧠 Bonnes pratiques implémentées
+
+- Services API séparés
+- `finalize()` RxJS pour le nettoyage des états
+- Gestion centralisée des erreurs API
+- Interfaces TypeScript strictes
+- Composants responsables (smart components)
+- Code lisible et maintenable
+
+---
+
+## ⚙️ Installation & lancement
+
+### 1️⃣ Prérequis
+- Node.js ≥ 16
+- Angular CLI
+
+### 2️⃣ Installation
+```bash
+npm install
