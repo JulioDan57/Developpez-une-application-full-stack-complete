@@ -58,8 +58,6 @@ Le frontend communique avec une API REST sécurisée via JWT.
 
 ---
 
-Test  s
-
 ## 🏗️ Architecture du projet
 ```
 src/
@@ -81,7 +79,7 @@ src/
 │   └── app-routing.module.ts # Définition des routes et protections via AuthGuard
 
 ```
-tetzrrzc 
+
 ---
 
 ## 🔌 Communication avec l’API
@@ -148,3 +146,4 @@ Basé sur `MatSnackBar`.
 ### 2️⃣ Installation
 ```bash
 npm install
+
