@@ -4,8 +4,8 @@
 
 ## MDD App (Front end)
 Toutes les informations concernant le front end de l’application MDD peuvent être trouvées dans :  
-[YOGA App front end documentation](./front/README.md)
+[MDD App front end documentation](./front/README.md)
 
 ## MDD App (Back end)
 Toutes les informations concernant le back end de l’application MDD peuvent être trouvées dans : 
-[YOGA App back end documentation](./back/README.md)
+[MDD App back end documentation](./back/README.md)
