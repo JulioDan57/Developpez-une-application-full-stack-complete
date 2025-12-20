@@ -168,3 +168,6 @@ src/
 
 ## Ressources     
 Le script SQL permettant de créer la base de données et de remplir la table de thèmes (Subjects) est disponible dans : `ressources/sql/script.sql`
+
+## Auteur
+Julio Daniel GIL CANO
