@@ -1,29 +1,32 @@
-# 📰 MDD – Frontend Angular
+# MDD (Front end)
 
-![Create Article](docs/screenshots/home.png) 
+![Home](docs/screenshots/home.png) 
 
 Ce projet est le **frontend Angular** de l’application full stack  **MDD (Monde de Dév)**.  
 Il permet aux utilisateurs de consulter des articles, commenter, s’abonner à des thèmes, gérer leur profil et publier du contenu.
 
 Le frontend communique avec une API REST sécurisée via JWT.
 
+Ce projet a été généré avec [Angular CLI](https://github.com/angular/angular-cli) version 14+.
+
 ---
 
-## 🚀 Technologies utilisées
+## Technologies utilisées
 
-- **Angular** 14+
+- **Angular**
 - **Angular Material** (UI & accessibilité)
 - **RxJS**
 - **TypeScript**
 - **SCSS**
 - **JWT Authentication**
 - **REST API**
+- **Project développé avec Visual Studio Code**
 
 ---
 
-## 📦 Fonctionnalités principales
+## Fonctionnalités principales
 
-### 🔐 Authentification
+### Authentification
 - Inscription
 - Connexion
 - Gestion du token JWT
@@ -34,7 +37,7 @@ Le frontend communique avec une API REST sécurisée via JWT.
 |----------|-------------|
 | ![Login](docs/screenshots/login.png) | ![Register](docs/screenshots/register.png) |
 
-### 📰 Articles
+### Articles
 - Affichage du feed d’articles
 - Tri par date
 - Détail d’un article
@@ -50,7 +53,7 @@ Le frontend communique avec une API REST sécurisée via JWT.
 |---------------------|-------------------------------|
 | ![Add Comment](docs/screenshots/comment-add.png) | ![Comments Nav](docs/screenshots/comment-navigation.png) |
 
-### ✍️ Création d’article
+### Création d’article
 - Création d’un nouvel article
 - Sélection des thèmes auxquels l’utilisateur est abonné
 - Validation des formulaires
@@ -61,7 +64,7 @@ Le frontend communique avec une API REST sécurisée via JWT.
 | ![Create Article](docs/screenshots/article-create.png) |
 
 ---
-### 🧩 Thèmes (Subjects)
+### Thèmes (Subjects)
 - Liste des thèmes disponibles
 - Indication des thèmes déjà abonnés
 - Abonnement à un thème
@@ -71,7 +74,7 @@ Le frontend communique avec une API REST sécurisée via JWT.
 |------------------------|
 | ![Create Article](docs/screenshots/subjects.png) |
 
-### 👤 Profil utilisateur
+### Profil utilisateur
 - Chargement des informations utilisateur
 - Mise à jour email / username / mot de passe
 - Rafraîchissement du token après mise à jour
@@ -85,7 +88,7 @@ Le frontend communique avec une API REST sécurisée via JWT.
 
 ---
 
-## 🏗️ Architecture du projet
+## Architecture du projet
 ```
 src/
 ├── app/
@@ -109,7 +112,7 @@ src/
 
 ---
 
-## 🔌 Communication avec l’API
+## Communication avec l’API
 
 ### Authentification
 - `POST /api/auth/login`
@@ -132,13 +135,36 @@ src/
 
 ---
 
-## ⚙️ Installation & lancement
+## Installation & lancement
 
-### 1️⃣ Prérequis
+### Prérequis
 - Node.js ≥ 16
 - Angular CLI
+- MySQL
 
-### 2️⃣ Installation
-```bash
-npm install
+### Installation
 
+* Git clone:
+
+    git clone https://github.com/JulioDan57/P06-Developpez-une-application-full-stack-complete
+
+* Allez dans le dossier:
+
+    cd front
+
+* Installer les dépendances :
+
+    npm install
+
+### Lancement
+
+* Lancer le Front end:
+    
+    npm run start; 
+    
+    ou
+
+    ng serve;
+
+## Ressources     
+Le script SQL permettant de créer la base de données et de remplir la table de thèmes (Subjects) est disponible dans : `ressources/sql/script.sql`
