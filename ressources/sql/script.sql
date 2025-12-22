@@ -61,4 +61,3 @@ VALUES
   ('Mobile App Development', 'Création d applications pour les appareils mobiles.'),
   ('Artificial Intelligence', 'Simulation de processus intelligents par des machines.'),
   ('Cybersecurity', 'Protection des systèmes informatiques contre les menaces.');
-
