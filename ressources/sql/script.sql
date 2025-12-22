@@ -52,13 +52,13 @@ ALTER TABLE subscriptions ADD CONSTRAINT unique_user_subject UNIQUE (user_id, su
 -- Insertion de données de test pour la table "subjects"
 INSERT INTO subjects (name, description)
 VALUES
-  ('JavaScript', 'Langage de programmation pour le développement web.'),
-  ('Java', 'Langage polyvalent orienté objet utilisé dans divers domaines.'),
-  ('Python', 'Langage interprété largement utilisé en développement logiciel.'),
-  ('Web3', 'Nouvelle version des technologies web avec un focus sur la décentralisation.'),
-  ('C++', 'Langage de programmation pour le développement logiciel et les jeux vidéo.'),
-  ('Data Science', 'Domaine utilisant des techniques statistiques pour l analyse de données.'),
-  ('Mobile App Development', 'Création d applications pour les appareils mobiles.'),
-  ('Artificial Intelligence', 'Simulation de processus intelligents par des machines.'),
-  ('Cybersecurity', 'Protection des systèmes informatiques contre les menaces.');
+  ('JavaScript', 'Langage de script utilisé pour ajouter des fonctionnalités interactives aux sites web.'),
+  ('Java', 'Langage polyvalent orienté objet et multiplateforme.'),
+  ('Python', 'Langage interprété utilisé pour le web, les données et l’automatisation.'),
+  ('Web3', 'Évolution d’internet où les applications sont décentralisées et basées sur la blockchain.'),
+  ('C++', 'Langage orienté objet et polyvalent, adapté aux applications rapides et complexes.'),
+  ('Data Science', 'Discipline qui utilise des données pour prendre des décisions et prévoir des tendances.'),
+  ('Mobile App Development', 'Conception et programmation des applications pour appareils mobiles.'),
+  ('Artificial Intelligence', 'Discipline qui permet aux machines d’imiter l’intelligence humaine.'),
+  ('Cybersecurity', 'Prévention, détection et réponse aux attaques informatiques..');
 
