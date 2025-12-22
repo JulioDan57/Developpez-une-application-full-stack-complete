@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Article } from '../models/article.models';
+import { map, Observable } from 'rxjs';
+import { Article, ArticleListResponse } from '../models/article.models';
 
 @Injectable({ providedIn: 'root' })
 export class ArticlesApiService {
@@ -10,10 +10,12 @@ export class ArticlesApiService {
 
   constructor(private http: HttpClient) {}
 
-  getArticles(): Observable<Article[]> {
-    return this.http.get<Article[]>(this.API_URL);
-  }
-
+getArticles(): Observable<Article[]> {
+  return this.http.get<ArticleListResponse>(this.API_URL)
+    .pipe(
+      map(response => response.articles)
+    );
+}
   getArticleById(id: number) {
     return this.http.get<Article>(`${this.API_URL}/${id}`);
   }

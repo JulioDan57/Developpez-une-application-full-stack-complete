@@ -59,7 +59,7 @@ public class AuthController {
         return ResponseEntity.ok(authService.getCurrentUser());
     }
 
-    @Operation(summary = "modifier les parametres de l'utilisateur")
+    @Operation(summary = "modifier les parametres de l'utilisateur connecté")
     @PutMapping("/me")
     public ResponseEntity<AuthUserUpdateResponse> update(@Valid @RequestBody AuthUserUpdateRequest request
     ) throws IOException {

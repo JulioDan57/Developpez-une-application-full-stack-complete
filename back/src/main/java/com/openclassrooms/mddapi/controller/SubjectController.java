@@ -3,12 +3,15 @@ package com.openclassrooms.mddapi.controller;
 import com.openclassrooms.mddapi.dto.SubjectDTO;
 import com.openclassrooms.mddapi.service.SubjectService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Validated
 @RestController
 @RequestMapping("/api/subjects")
 @RequiredArgsConstructor
@@ -35,14 +38,14 @@ public class SubjectController {
 
     @Operation(summary = "S'abonner à un sujet")
     @PostMapping("/{id}/subscribe")
-    public ResponseEntity<Void> subscribe(@PathVariable Integer id) {
+    public ResponseEntity<Void> subscribe(@PathVariable @Min(1) Integer id) {
         subjectService.subscribe(id);
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Se désabonner d'un sujet")
     @PostMapping("/{id}/unsubscribe")
-    public ResponseEntity<Void> unsubscribe(@PathVariable Integer id) {
+    public ResponseEntity<Void> unsubscribe(@PathVariable @Min(1) Integer id) {
         subjectService.unsubscribe(id);
         return ResponseEntity.ok().build();
     }

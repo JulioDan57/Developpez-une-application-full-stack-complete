@@ -27,3 +27,7 @@ export interface Comment {
   createdAt: string;
   author: string;
 }
+
+export interface ArticleListResponse {
+  articles: Article[];
+}

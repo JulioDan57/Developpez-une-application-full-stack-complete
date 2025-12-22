@@ -27,15 +27,14 @@ public class ArticleService {
     // ============================================================
     // FEED + ARTICLES
     // ============================================================
-
-    public List<ArticleDTO> getFeed(String order) {
+    public ArticleListResponse getFeed(String order) {
         User currentUser = securityUtils.getCurrentUser();
 
         // 1️⃣ Récupérer les subscriptions UNE SEULE FOIS
         List<Subscription> subscriptions = subscriptionRepository.findByUser(currentUser);
 
         if (subscriptions.isEmpty()) {
-            return List.of();
+            return new ArticleListResponse(List.of());
         }
 
         // 2️⃣ Subjects abonnés
@@ -54,10 +53,14 @@ public class ArticleService {
                         ? articleRepository.findBySubjectInOrderByCreatedAtAsc(subscribedSubjects)
                         : articleRepository.findBySubjectInOrderByCreatedAtDesc(subscribedSubjects);
 
-        // 5️⃣ Mapping DTO
-        return articles.stream()
+        List<ArticleDTO> articleDTOs = articles.stream()
                 .map(article -> mapToDTO(article, subscribedSubjectIds))
                 .collect(Collectors.toList());
+
+        ArticleListResponse response = new ArticleListResponse();
+        response.setArticles(articleDTOs);
+
+        return response;
     }
 
     public ArticleDTO createArticle(CreateArticleRequest request) {

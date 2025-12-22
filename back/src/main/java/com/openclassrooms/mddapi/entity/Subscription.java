@@ -37,11 +37,15 @@ public class Subscription {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Subscription)) return false;
-        return subscriptionId != null && subscriptionId.equals(((Subscription) o).subscriptionId);
+        Subscription that = (Subscription) o;
+        return user != null && subject != null &&
+                user.equals(that.user) &&
+                subject.equals(that.subject);
     }
 
     @Override
     public int hashCode() {
-        return getClass().hashCode();
+        return java.util.Objects.hash(user, subject);
     }
 }
+
