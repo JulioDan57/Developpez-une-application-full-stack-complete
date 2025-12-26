@@ -9,9 +9,38 @@ import io.swagger.v3.oas.models.info.License;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Configuration OpenAPI (Swagger) de l'application.
+ *
+ * Cette classe configure la documentation Swagger générée via Springdoc OpenAPI.
+ * Elle définit :
+ *
+ * <ul>
+ *     <li>Les informations générales de l'API (titre, description, version)</li>
+ *     <li>Les informations de contact et de licence</li>
+ *     <li>Le schéma de sécurité JWT (Bearer Token)</li>
+ * </ul>
+ *
+ * Grâce à cette configuration, Swagger UI permet d'authentifier les requêtes
+ * en utilisant un jeton JWT via l'en-tête HTTP {@code Authorization}.
+ *
+ */
 @Configuration
 public class OpenApiConfig {
 
+    /**
+     * Crée et configure le bean {@link OpenAPI} utilisé par Swagger UI.
+     *
+     * Ce bean :
+     *
+     * <ul>
+     *     <li>Déclare les métadonnées de l'API</li>
+     *     <li>Configure la sécurité JWT avec le schéma {@code BearerAuth}</li>
+     *     <li>Permet l'ajout du bouton "Authorize" dans Swagger UI</li>
+     * </ul>
+     *
+     * @return une instance configurée de {@link OpenAPI}
+     */
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()

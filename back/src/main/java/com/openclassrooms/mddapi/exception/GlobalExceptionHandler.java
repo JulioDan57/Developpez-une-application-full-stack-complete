@@ -14,12 +14,29 @@ import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Gestionnaire global des exceptions de l'API REST.
+ *
+ * Cette classe centralise le traitement des exceptions levées dans
+ * l'application afin de retourner des réponses HTTP cohérentes,
+ * structurées et adaptées aux clients.
+ *
+ * Chaque exception est traduite en un objet {@link ApiError}
+ * contenant le code HTTP, un message explicite et un horodatage.
+ *
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
     // ================================
     // 1️⃣ DTO Validation errors (@Valid)
     // ================================
+    /**
+     * Gère les erreurs de validation des DTO annotés avec {@code @Valid}.
+     *
+     * @param ex exception levée lors de la validation des champs d'un objet
+     * @return une réponse HTTP 400 (Bad Request) contenant les erreurs de validation
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiError> handleValidationErrors(MethodArgumentNotValidException ex) {
 
@@ -43,6 +60,13 @@ public class GlobalExceptionHandler {
     // ============================================
     // 2️⃣ @Valid on PathVariable / RequestParam
     // ============================================
+    /**
+     * Gère les violations de contraintes sur les paramètres
+     * ({@code @PathVariable}, {@code @RequestParam}, etc.).
+     *
+     * @param ex exception levée lors de la validation des contraintes
+     * @return une réponse HTTP 400 (Bad Request) avec le détail des violations
+     */
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<ApiError> handleConstraintViolations(ConstraintViolationException ex) {
 
@@ -64,6 +88,12 @@ public class GlobalExceptionHandler {
     // ================================
     // 3️⃣ Wrong credentials
     // ================================
+    /**
+     * Gère les erreurs d'authentification liées à des identifiants incorrects.
+     *
+     * @param ex exception levée lorsque les informations d'identification sont invalides
+     * @return une réponse HTTP 401 (Unauthorized)
+     */
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<ApiError> handleBadCredentials(BadCredentialsException ex) {
 
@@ -80,6 +110,13 @@ public class GlobalExceptionHandler {
     // ================================
     // 4️⃣ Forbidden
     // ================================
+    /**
+     * Gère les erreurs d'accès lorsque l'utilisateur ne dispose pas
+     * des autorisations nécessaires.
+     *
+     * @param ex exception levée lors d'un accès interdit
+     * @return une réponse HTTP 403 (Forbidden)
+     */
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<ApiError> handleAccessDenied(AccessDeniedException ex) {
 
@@ -96,6 +133,12 @@ public class GlobalExceptionHandler {
     // ================================
     // 5️⃣ Not Found
     // ================================
+    /**
+     * Gère les erreurs liées à une ressource inexistante.
+     *
+     * @param ex exception levée lorsque la ressource demandée n'est pas trouvée
+     * @return une réponse HTTP 404 (Not Found)
+     */
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiError> handleNotFound(ResourceNotFoundException ex) {
 
@@ -112,6 +155,12 @@ public class GlobalExceptionHandler {
     // ================================
     // 6️⃣ Fallback
     // ================================
+    /**
+     * Gère les conflits de données ou de règles métier.
+     *
+     * @param ex exception levée lorsqu'un conflit est détecté
+     * @return une réponse HTTP 409 (Conflict)
+     */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiError> handleGeneric(Exception ex) {
 
@@ -125,6 +174,12 @@ public class GlobalExceptionHandler {
         return ResponseEntity.internalServerError().body(api);
     }
 
+    /**
+     * Gère toutes les autres exceptions non traitées explicitement.
+     *
+     * @param ex exception générique
+     * @return une réponse HTTP 500 (Internal Server Error)
+     */
     @ExceptionHandler(ConflictException.class)
     public ResponseEntity<ApiError> handleConflict(ConflictException ex) {
         ApiError api = new ApiError(HttpStatus.CONFLICT.value(), ex.getMessage(), null, Instant.now());

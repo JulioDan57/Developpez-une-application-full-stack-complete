@@ -14,6 +14,21 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+
+/**
+ * Service métier gérant la logique liée aux articles, au fil d'actualité
+ * et aux commentaires.
+ *
+ * Cette classe centralise les règles métiers concernant :
+ * <ul>
+ *     <li>La récupération du feed utilisateur</li>
+ *     <li>La création et la consultation d'articles</li>
+ *     <li>La gestion des commentaires</li>
+ * </ul>
+ * Elle s'appuie sur Spring Data JPA pour l'accès aux données
+ * et sur {@link SecurityUtils} pour identifier l'utilisateur connecté.
+ *
+ */
 @Service
 @RequiredArgsConstructor
 public class ArticleService {
@@ -27,6 +42,20 @@ public class ArticleService {
     // ============================================================
     // FEED + ARTICLES
     // ============================================================
+    /**
+     * Récupère le fil d'actualité (feed) de l'utilisateur connecté.
+     *
+     * Le feed est composé des articles appartenant aux sujets auxquels
+     * l'utilisateur est abonné, triés par date de création.
+     *
+     *
+     * @param order ordre de tri des articles :
+     *              <ul>
+     *                  <li>{@code "asc"} : du plus ancien au plus récent</li>
+     *                  <li>{@code "desc"} : du plus récent au plus ancien</li>
+     *              </ul>
+     * @return {@link ArticleListResponse} contenant la liste des articles du feed
+     */
     public ArticleListResponse getFeed(String order) {
         User currentUser = securityUtils.getCurrentUser();
 
@@ -63,6 +92,13 @@ public class ArticleService {
         return response;
     }
 
+    /**
+     * Crée un nouvel article pour l'utilisateur connecté.
+     *
+     * @param request données nécessaires à la création de l'article
+     * @return {@link ArticleDTO} représentant l'article créé
+     * @throws ResourceNotFoundException si le sujet associé n'existe pas
+     */
     public ArticleDTO createArticle(CreateArticleRequest request) {
         User user = securityUtils.getCurrentUser();
 
@@ -89,6 +125,13 @@ public class ArticleService {
         return mapToDTO(article, subscribedSubjectIds);
     }
 
+    /**
+     * Récupère un article par son identifiant.
+     *
+     * @param id identifiant de l'article
+     * @return {@link ArticleDTO} correspondant à l'article demandé
+     * @throws ResourceNotFoundException si l'article n'existe pas
+     */
     public ArticleDTO getArticle(Integer id) {
         Article article = articleRepository.findById(id)
                 .orElseThrow(() ->        new ResourceNotFoundException("Article introuvable : " + id)
@@ -107,7 +150,14 @@ public class ArticleService {
     // ============================================================
     // COMMENTS
     // ============================================================
-
+    /**
+     * Ajoute un commentaire à un article.
+     *
+     * @param articleId identifiant de l'article commenté
+     * @param request   contenu du commentaire
+     * @return {@link CommentDTO} représentant le commentaire créé
+     * @throws ResourceNotFoundException si l'article n'existe pas
+     */
     public CommentDTO addComment(Integer articleId, CreateCommentRequest request) {
         User user = securityUtils.getCurrentUser();
 

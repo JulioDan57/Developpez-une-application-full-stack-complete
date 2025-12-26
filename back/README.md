@@ -155,6 +155,10 @@ La base de données **mddbd** doit exister. Le script SQL permettant de créer l
 - Accessible sur la route : /swagger-ui/index.html
 - Permet de tester tous les endpoints et voir les modèles (DTO) utilisés.
 
+## Javadoc
+- mvn javadoc:javadoc -Dshow=private
+- à consulter dans /target/site/apidocs/index.html
+
 ## Commandes Maven
 - mvn clean install
 - mvn spring-boot:run
