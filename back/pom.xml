@@ -14,9 +14,9 @@
     </parent>
 
     <groupId>com.example</groupId>
-    <artifactId>app-api</artifactId>
+    <artifactId>mdd-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>app-api</name>
+    <name>mdd-api</name>
 
     <properties>
         <java.version>21</java.version>
